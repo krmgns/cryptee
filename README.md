@@ -27,7 +27,7 @@ define('COOKIE_PASS', 'z:W;[*l>Eq.h"t)cs#XhU\+!=S]#q)\yG-"?c"F;zVZFq./i_W"}"6^/=
 define('FOOBAR_PASS', 'SNz6@b*/k(iw!plOVeTBWxpL[1$;la|kb2}KHsx7TO/Z28NTxr:QqTCNV$*v1S');
 
 $c = new Cryptee(COOKIE_PASS);
-$encodedCookie = $c->encode('username=qeremy&userpass=gotcha..' /* Really!*/);
+$encodedCookie = $c->encode('username=qeremy&userpass=gotcha..' /* Really! */);
 $decodedCookie = $c->decode($encodedCookie);
 printf('<b>Encoded</b>: %s, <b>Decoded</b>: %s<br>', $encodedCookie, $decodedCookie);
 
