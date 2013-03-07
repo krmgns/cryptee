@@ -154,7 +154,7 @@ class Cryptee
     }
     
     /**
-     * Generate salt a string.
+     * Generate a salt string.
      *
      * @param  integer $len
      * @return string
