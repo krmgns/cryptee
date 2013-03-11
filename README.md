@@ -17,6 +17,9 @@ $decoded = $c->decode($encoded);
 printf('<b>Crypted String</b>: %s<br>', $crypted);
 printf('<b>Encoded String</b>: %s<br>', $encoded);
 printf('<b>Decoded String</b>: %s', htmlspecialchars($decoded, ENT_NOQUOTES, 'UTF-8'));
+// Crypted String: W˜kžß¨ÍJKV]%'„Ë
+// Encoded String: V5hrnt-ozUoDS1ZdJScEhMsH
+// Decoded String: Lorem ipsum dolor.
 ```
 
 Use different pass keys for different purposes.
