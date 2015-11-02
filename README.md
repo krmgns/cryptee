@@ -1,15 +1,13 @@
 **USAGE**
 
 ```php
-error_reporting(E_ALL & ~E_NOTICE);
+require('Cryptee/Cryptee.php');
 
-require 'Cryptee.php';
-
-// $str = file_get_contents('Cryptee.php');
 $str = 'Lorem ipsum dolor.';
+// $str = file_get_contents('Cryptee.php');
 
 $c = new Cryptee();
-// Or hex way
+// or hex way
 // $c = new Cryptee(null, Cryptee::HEX);
 $crypted = $c->crypt($str);
 $encoded = $c->encode($str);
