@@ -2,7 +2,7 @@
 
 ```php
 // composer
-{"require": {"qeremy/oppa": "dev-master"}}
+{"require": {"qeremy/cryptee": "dev-master"}}
 
 // manual inc
 require('path/to/Cryptee/Cryptee.php');
