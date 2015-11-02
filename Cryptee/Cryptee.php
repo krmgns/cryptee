@@ -165,7 +165,7 @@ final class Cryptee
      * Convert hex inputs to bin.
      *
      * @param  string $hex
-     * @return string
+     * @return binary
      */
     public function hexbin($hex) {
         $bin = b'';
