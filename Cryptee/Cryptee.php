@@ -93,7 +93,7 @@ final class Cryptee
      */
     public function crypt($input) {
         $bin = b'';
-        $key = $cnt = [];
+        $key = $cnt = array();
         for ($i = 0, $len = strlen($this->pass); $i < 255; $i++) {
             $key[$i] = ord(substr($this->pass, ($i % $len) + 1, 1));
             $cnt[$i] = $i;
