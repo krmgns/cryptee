@@ -1,7 +1,7 @@
 **USAGE**
 
 ```php
-require('Cryptee/Cryptee.php');
+require('path/to/Cryptee/Cryptee.php');
 
 $str = 'Lorem ipsum dolor.';
 // $str = file_get_contents('Cryptee.php');
