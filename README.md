@@ -27,6 +27,6 @@ Use different pass keys for different purposes.
 define('FOO_KEY', 'z:W;[*l>Eq.h"t)cs#XhU\+!=S]#q)\yG-"?c"F;zVZFq./i_W"}"6^/=x$q)$');
 define('BAR_KEY', 'SNz6@b*/k(iw!plOVeTBWxpL[1$;la|kb2}KHsx7TO/Z28NTxr:QqTCNV$*v1S');
 
-$c = new Cryptee\Cryptee(FOO_KEY);
-$c = new Cryptee\Cryptee(BAR_KEY);
+$cFoo = new Cryptee\Cryptee(FOO_KEY);
+$cBar = new Cryptee\Cryptee(BAR_KEY);
 ```
