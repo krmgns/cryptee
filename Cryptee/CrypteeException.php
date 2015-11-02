@@ -25,6 +25,7 @@ namespace Cryptee;
  * @package Cryptee
  * @object  Cryptee\CrypteeException
  * @extends \Exception
+ * @version v1.0
  * @since   v1.0
  * @author  Kerem Güneş <qeremy@gmail>
 */
