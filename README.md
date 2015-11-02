@@ -1,6 +1,9 @@
 ##Usage##
 
 ```php
+// composer
+{"require": {"qeremy/oppa": "dev-master"}}
+
 // manual inc
 require('path/to/Cryptee/Cryptee.php');
 
