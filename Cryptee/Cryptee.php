@@ -22,9 +22,10 @@
 namespace Cryptee;
 
 /**
- * @object  Cryptee
- * @version v2.0
- * @author  Kerem Gunes <qeremy@gmail>
+ * @package Cryptee
+ * @object  Cryptee\Cryptee
+ * @since   v1.0
+ * @author  Kerem Güneş <qeremy@gmail>
  */
 class Cryptee
 {
