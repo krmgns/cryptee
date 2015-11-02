@@ -8,7 +8,6 @@
 require('path/to/Cryptee/Cryptee.php');
 
 $str = 'Lorem ipsum dolor.';
-// $str = file_get_contents('Cryptee.php');
 
 $c = new Cryptee\Cryptee();
 // or hex way
