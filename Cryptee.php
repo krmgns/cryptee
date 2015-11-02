@@ -1,7 +1,10 @@
 <?php
-
 /**
- * Copyright 2013, Kerem Gunes <http://qeremy.com/>.
+ * Copyright (c) 2008-2015 Kerem Gunes
+ *    <http://qeremy.com>
+ *
+ * Apache License, Version 2.0
+ *    <http://www.apache.org/licenses/LICENSE-2.0>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -15,7 +18,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
- 
+
 /**
  * @class Cryptee v0.1
  */
@@ -26,14 +29,14 @@ class Cryptee
         $_pass = '>~i:kN}\w=uH`#6}Qh4/H)S<q+J6kH]>b+BERj=kiQcDDv:No"6{*V=.]QasJO,P',
         // Output type (base64 or hex, for readable strings)
         $_type;
-    
+
     const
         // Base64
         B64 = 1,
         // Hex
         HEX = 2;
-    
-    
+
+
     /**
      * Initialize Cryptee object, set pass and type.
      *
@@ -61,7 +64,7 @@ class Cryptee
         }
         $this->_type = $type;
     }
-    
+
     /**
      * Encrypt/Decrypt inputs.
      *
@@ -80,7 +83,7 @@ class Cryptee
             );
             die($error);
         }
-        
+
         $pwdl = strlen($this->_pass);
         for ($i = 0; $i < 255; $i++) {
             $key[$i] = ord(substr($this->_pass, ($i % $pwdl) + 1, 1));
@@ -101,10 +104,10 @@ class Cryptee
             $ord  = ord(substr($data, $i, 1)) ^ $cnt[($cnt[$a] + $cnt[$j]) % 256];
             $chr .= chr($ord);
         }
-        
+
         return $chr;
     }
-    
+
     /**
      * Encode and convert inputs to readable string.
      *
@@ -121,7 +124,7 @@ class Cryptee
         }
         return $input;
     }
-    
+
     /**
      * Decode and convert inputs to original string.
      *
@@ -139,7 +142,7 @@ class Cryptee
         }
         return $input;
     }
-    
+
     /**
      * Convert hex inputs to bin.
      *
@@ -152,7 +155,7 @@ class Cryptee
         }
         return $bin;
     }
-    
+
     /**
      * Generate a salt string.
      *
