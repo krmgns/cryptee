@@ -6,9 +6,9 @@ require('path/to/Cryptee/Cryptee.php');
 $str = 'Lorem ipsum dolor.';
 // $str = file_get_contents('Cryptee.php');
 
-$c = new Cryptee();
+$c = new Cryptee\Cryptee();
 // or hex way
-// $c = new Cryptee(null, Cryptee::HEX);
+// $c = new Cryptee\Cryptee(null, Cryptee::HEX);
 $crypted = $c->crypt($str);
 $encoded = $c->encode($str);
 $decoded = $c->decode($encoded);
@@ -27,6 +27,6 @@ Use different pass keys for different purposes.
 define('FOO_KEY', 'z:W;[*l>Eq.h"t)cs#XhU\+!=S]#q)\yG-"?c"F;zVZFq./i_W"}"6^/=x$q)$');
 define('BAR_KEY', 'SNz6@b*/k(iw!plOVeTBWxpL[1$;la|kb2}KHsx7TO/Z28NTxr:QqTCNV$*v1S');
 
-$c = new Cryptee(FOO_KEY);
-$c = new Cryptee(BAR_KEY);
+$c = new Cryptee\Cryptee(FOO_KEY);
+$c = new Cryptee\Cryptee(BAR_KEY);
 ```
