@@ -24,7 +24,7 @@ namespace Cryptee;
 /**
  * @package Cryptee
  * @object  Cryptee\Cryptee
- * @since   v1.0
+ * @version v1.0
  * @author  Kerem Güneş <qeremy@gmail>
  */
 final class Cryptee
