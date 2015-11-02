@@ -27,7 +27,7 @@ namespace Cryptee;
  * @since   v1.0
  * @author  Kerem Güneş <qeremy@gmail>
  */
-class Cryptee
+final class Cryptee
 {
     private
         // Set your pass key here or call first of all Cryptee::generateSalt()
