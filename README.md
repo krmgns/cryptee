@@ -23,7 +23,7 @@ printf('Decoded String: %s', htmlspecialchars($decoded, ENT_NOQUOTES, 'UTF-8'));
 // Decoded String: Lorem ipsum dolor.
 ```
 
-Use different pass keys for different purposes.
+Use different keys for different purposes.
 
 ```php
 // keep in safe these chicks!!!
@@ -33,6 +33,8 @@ define('BAR_KEY', 'SNz6@b*/k(iw!plOVeTBWxpL[1$;la|kb2}KHsx7TO/Z28NTxr:QqTCNV$*v1
 $cFoo = new Cryptee\Cryptee(FOO_KEY);
 $cBar = new Cryptee\Cryptee(BAR_KEY);
 ```
+
+Tip: You can create new keys calling first `Cryptee::generateKey()`.
 
 ## License
 
