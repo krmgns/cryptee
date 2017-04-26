@@ -61,15 +61,12 @@ class Cryptee
     public function __construct($key = null, $type = null) {
         // check key
         if (!$key || strlen($key) < 6 || !(
-                preg_match('~[a-z0-9]+~i', $key) && preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
+            preg_match('~[a-z0-9]+~i', $key) && preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
         )) {
-            throw new CrypteeException(sprintf(
-                '<code>Error: <b>%s</b> on line <b>%s</b><br>
-                -> <b>Cryptee::__construct()</b><br>
-                -> <b>Cryptee::$key</b><br>
-                Key length must be at least 6 chars and contain alp-num & printable chars!<br>
-                Pick up the random key below generated for once instead <b>%s</b>.<br>
-                Key: <b style="color:red">%s</b></code>', __file__, __line__, $key, htmlentities(self::generateKey())
+            throw new CrypteeException(sprintf("
+                Key length must be at least 6 chars and contain alp-num & printable chars!\n
+                Pick up the random key below generated for once.\n
+                Key: %s", self::generateKey()
             ));
         }
         $this->key = strval($key);
