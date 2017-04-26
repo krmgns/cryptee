@@ -1,11 +1,11 @@
-##Usage##
+## Usage
 
 ```php
 // composer
-{"require": {"qeremy/cryptee": "dev-master"}}
+{"require": {"k-gun/cryptee": "dev-master"}}
 
 // manual inc
-require('path/to/Cryptee/Cryptee.php');
+require('path/to/cryptee/src/Cryptee.php');
 
 $str = 'Lorem ipsum dolor.';
 
@@ -34,11 +34,11 @@ $cFoo = new Cryptee\Cryptee(FOO_KEY);
 $cBar = new Cryptee\Cryptee(BAR_KEY);
 ```
 
-##License##
+## License
 
 <pre>
 Copyright (c) 2008-2015 Kerem Güneş
-   &lt;http://qeremy.com>
+   &lt;k-gun@mail.com>
 
 GNU General Public License v3.0
    &lt;http://www.gnu.org/licenses/gpl-3.0.txt>
