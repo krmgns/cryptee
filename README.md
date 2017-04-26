@@ -34,7 +34,7 @@ $cFoo = new Cryptee\Cryptee(FOO_KEY);
 $cBar = new Cryptee\Cryptee(BAR_KEY);
 ```
 
-Tip: You can create new keys calling first `Cryptee::generateKey()`.
+Tip: You can create new keys calling `Cryptee::generateKey()` method.
 
 ## License
 
