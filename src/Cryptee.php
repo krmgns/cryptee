@@ -65,7 +65,7 @@ class Cryptee
         )) {
             throw new CrypteeException(sprintf("
                 Key length must be at least 6 chars and contain alp-num & printable chars!\n
-                Pick up the random key below generated for once.\n
+                Pick up random key below generated for once.\n
                 Key: %s", self::generateKey()
             ));
         }
