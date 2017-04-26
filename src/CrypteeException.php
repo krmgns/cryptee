@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2008-2015 Kerem Güneş
- *    <http://qeremy.com>
+ *    <k-gun@mail.com>
  *
  * GNU General Public License v3.0
  *    <http://www.gnu.org/licenses/gpl-3.0.txt>
@@ -24,26 +24,7 @@ namespace Cryptee;
 /**
  * @package Cryptee
  * @object  Cryptee\CrypteeException
- * @extends \Exception
- * @version v1.0
- * @since   v1.0
- * @author  Kerem Güneş <qeremy@gmail>
+ * @author  Kerem Güneş <k-gun@mail.com>
 */
-class CrypteeException
-    extends \Exception
-{
-    /**
-     * Object constructor.
-     */
-    public function __construct() {
-        $args = func_get_args();
-        $mesg = array_shift($args);
-
-        // for 'Error on %d line', $line
-        if (count($args)) {
-            $mesg = vsprintf($mesg, $args);
-        }
-
-        parent::__construct($mesg);
-    }
-}
+class CrypteeException extends \Exception
+{}
