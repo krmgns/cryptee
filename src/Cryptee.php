@@ -58,7 +58,8 @@ class Cryptee
      * @param string $key
      * @param int    $type
      */
-    public function __construct($key = null, $type = null) {
+    public function __construct($key = null, $type = null)
+    {
         // check key
         if (!$key || strlen($key) < 6 || !(
             preg_match('~[a-z0-9]+~i', $key) && preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
