@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c) 2008-2015 Kerem Güneş
- *    <http://qeremy.com>
+ *    <k-gun@mail.com>
  *
  * GNU General Public License v3.0
  *    <http://www.gnu.org/licenses/gpl-3.0.txt>
@@ -24,30 +24,28 @@ namespace Cryptee;
 /**
  * @package Cryptee
  * @object  Cryptee\Cryptee
- * @version v1.0
- * @author  Kerem Güneş <qeremy@gmail>
+ * @author  Kerem Güneş <k-gun@mail.com>
  */
-final class Cryptee
+class Cryptee
 {
     /**
      * Output types.
-     * @const int, int
+     * @const int
      */
     const B64 = 1, // Base64
           HEX = 2; // Hex
 
     /**
-     * Salt length.
+     * Key length.
      * @const int
      */
-    const SALT_LENGTH = 128;
+    const KEY_LENGTH = 128;
 
     /**
-     * Cryptee pass key.
-     * @note Set your pass key here or call first Cryptee::generatesalt() to get new one.
-     * @var  string
+     * Key.
+     * @var string
      */
-    private $pass = '>~i:kN}\w=uH`#6}Qh4/H)S<q+J6kH]>b+BERj=kiQcDDv:No"6{*V=.]QasJO,P';
+    private $key;
 
     /**
      * Output type (base64 or hex, for readable strings)
@@ -56,46 +54,42 @@ final class Cryptee
     private $type = self::B64;
 
     /**
-     * Object constructor.
-     *
-     * @param string  $pass
-     * @param int     $type
+     * Constructor.
+     * @param string $key
+     * @param int    $type
      */
-    public function __construct($pass = null, $type = null) {
-        // check pass reliability if it's provided
-        if ($pass !== null) {
-            if (strlen($pass) < 6 || !(
-                    preg_match('~[a-z0-9]+~i', $pass) &&
-                    preg_match('~[_=&"\.\+\-\*\?\']+~', $pass)
-            )) { throw new CrypteeException(
-                    '<code>Error: <b>%s</b> on line <b>%s</b><br>
-                    -> <b>Cryptee::__construct()</b><br>
-                    -> <b>Cryptee::$pass</b><br>
-                    Password length must be at least 6 chars and contain alp-num & printable chars!<br>
-                    Pick up the random password below generated for once instead <b>%s</b>.<br>
-                    Password: <b style="color:red">%s</b></code>', __file__, __line__, $pass, htmlentities(self::generateSalt())
-                );
-            }
-            $this->pass = strval($pass);
+    public function __construct($key = null, $type = null) {
+        // check key
+        if (!$key || strlen($key) < 6 || !(
+                preg_match('~[a-z0-9]+~i', $key) && preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
+        )) {
+            throw new CrypteeException(sprintf(
+                '<code>Error: <b>%s</b> on line <b>%s</b><br>
+                -> <b>Cryptee::__construct()</b><br>
+                -> <b>Cryptee::$key</b><br>
+                Key length must be at least 6 chars and contain alp-num & printable chars!<br>
+                Pick up the random key below generated for once instead <b>%s</b>.<br>
+                Key: <b style="color:red">%s</b></code>', __file__, __line__, $key, htmlentities(self::generateKey())
+            ));
         }
+        $this->key = strval($key);
 
-        // set type
-        if ($type !== null) {
+        if ($type) {
             $this->type = $type;
         }
     }
 
     /**
-     * Encrypt/Decrypt inputs.
-     *
+     * Crypt.
      * @param  string $input
      * @return binary
      */
-    public function crypt($input) {
-        $bin = b'';
+    public function crypt($input)
+    {
+        $ret = b'';
         $key = $cnt = array();
-        for ($i = 0, $len = strlen($this->pass); $i < 255; $i++) {
-            $key[$i] = ord(substr($this->pass, ($i % $len) + 1, 1));
+        for ($i = 0, $length = strlen($this->key); $i < 255; $i++) {
+            $key[$i] = ord(substr($this->key, ($i % $length) + 1, 1));
             $cnt[$i] = $i;
         }
 
@@ -106,27 +100,27 @@ final class Cryptee
             $cnt[$x] = $s;
         }
 
-        for ($i = 0, $x = -1, $y = -1, $len = strlen($input); $i < $len; $i++) {
+        for ($i = 0, $x = -1, $y = -1, $length = strlen($input); $i < $length; $i++) {
             $x = ($x + 1) % 256;
             $y = ($y + $cnt[$x]) % 256;
             $z = $cnt[$x];
             $cnt[$x] = isset($cnt[$y]) ? $cnt[$y] : 1;
             $cnt[$y] = $z;
             $ord  = ord(substr($input, $i, 1)) ^ $cnt[($cnt[$x] + $cnt[$y]) % 256];
-            $bin .= chr($ord);
+            $ret .= chr($ord);
         }
 
-        return $bin;
+        return $ret;
     }
 
     /**
-     * Encode and convert inputs to readable string.
-     *
+     * Encode.
      * @param  string $input
      * @param  bool   $translate
      * @return string
      */
-    public function encode($input, $translate = false) {
+    public function encode($input, $translate = false)
+    {
         $input = $this->crypt($input);
         if ($this->type == self::B64) {
             $input = base64_encode($input);
@@ -141,13 +135,13 @@ final class Cryptee
     }
 
     /**
-     * Decode and convert inputs to original string.
-     *
+     * Decode.
      * @param  string $input
      * @param  bool   $translate
      * @return string
      */
-    public function decode($input, $translate = false) {
+    public function decode($input, $translate = false)
+    {
         if ($this->type == self::B64) {
             if ($translate) {
                 $input = strtr($input, '-_', '+/');
@@ -155,21 +149,21 @@ final class Cryptee
             $input = base64_decode($input);
             $input = $this->crypt($input);
         } elseif ($this->type == self::HEX) {
-            $input = $this->crypt($this->hexbin($input));
+            $input = $this->crypt($this->hexToBin($input));
         }
 
         return $input;
     }
 
     /**
-     * Convert hex inputs to bin.
-     *
+     * Hex to bin.
      * @param  string $hex
      * @return binary
      */
-    public function hexbin($hex) {
+    public function hexToBin($hex)
+    {
         $bin = b'';
-        for ($i = 0, $len = strlen($hex); $i < $len; $i += 2) {
+        for ($i = 0, $length = strlen($hex); $i < $length; $i += 2) {
             $bin .= chr(hexdec(substr($hex, $i, 2)));
         }
 
@@ -177,17 +171,17 @@ final class Cryptee
     }
 
     /**
-     * Generate a salt string.
-     *
-     * @param  int $len
+     * Generate key.
+     * @param  int $length
      * @return string
      */
-    public static function generateSalt($len = self::SALT_LENGTH) {
-        $salt = '';
-        for ($i = 0; $i < $len; $i++) {
-            $salt .= chr(rand(33, 126));
+    public static function generateKey($length = self::KEY_LENGTH)
+    {
+        $key = '';
+        for ($i = 0; $i < $length; $i++) {
+            $key .= chr(rand(33, 126));
         }
 
-        return $salt;
+        return $key;
     }
 }
