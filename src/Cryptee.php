@@ -64,7 +64,7 @@ class Cryptee
     public function __construct($key = null, $type = null)
     {
         // check key
-        if (!$key || strlen($key) < 6 || !(
+        if ($key == null || strlen($key) < 6 || !(
             preg_match('~[a-z0-9]+~i', $key) && preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
         )) {
             throw new CrypteeException(sprintf("
@@ -88,7 +88,7 @@ class Cryptee
     public function crypt($input)
     {
         $ret = b'';
-        $key = $cnt = array();
+        $key = $cnt = [];
         for ($i = 0, $length = strlen($this->key); $i < 255; $i++) {
             $key[$i] = ord(substr($this->key, ($i % $length) + 1, 1));
             $cnt[$i] = $i;
