@@ -88,7 +88,9 @@ class Cryptee
     public function crypt($input)
     {
         $ret = b'';
-        $key = $cnt = [];
+        $key = [];
+        $cnt = [];
+
         for ($i = 0, $length = strlen($this->key); $i < 255; $i++) {
             $key[$i] = ord(substr($this->key, ($i % $length) + 1, 1));
             $cnt[$i] = $i;
@@ -97,7 +99,7 @@ class Cryptee
         for ($i = 0, $x = 0; $i < 255; $i++) {
             $x = ($x + $cnt[$i] + $key[$i]) % 256;
             $s = $cnt[$i];
-            $cnt[$i] = $cnt[$x];
+            $cnt[$i] = isset($cnt[$x]) ? $cnt[$x] : 0;
             $cnt[$x] = $s;
         }
 
@@ -105,7 +107,7 @@ class Cryptee
             $x = ($x + 1) % 256;
             $y = ($y + $cnt[$x]) % 256;
             $z = $cnt[$x];
-            $cnt[$x] = isset($cnt[$y]) ? $cnt[$y] : 1;
+            $cnt[$x] = isset($cnt[$y]) ? $cnt[$y] : 0;
             $cnt[$y] = $z;
             $ord  = ord(substr($input, $i, 1)) ^ $cnt[($cnt[$x] + $cnt[$y]) % 256];
             $ret .= chr($ord);
