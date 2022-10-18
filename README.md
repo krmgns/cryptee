@@ -1,8 +1,10 @@
-For Cryptee/2.0, PHP/7.4 or newer version is required, but older versions (1.0, 1.1, 1.2) work with PHP/5.4 as well.
+For Cryptee/2.0, PHP/7.4 or newer version is required, but older versions (1.0, 1.1, 1.2) work with PHP's older versions as well.
 
 You can install it via [Composer](//getcomposer.org) using the command below on console:
 
 `composer require k-gun/cryptee`
+
+**Usage**
 
 ```php
 use Cryptee\Cryptee;
@@ -27,7 +29,7 @@ printf("Decoded String: %s\n", $decoded);
 // Decoded String: Lorem ipsum dolor.
 ```
 
-Use different keys for different fields.
+**Usings different keys**
 
 ```php
 // Keep these chicks in save!
