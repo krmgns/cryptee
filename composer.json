@@ -3,10 +3,8 @@
     "homepage": "https://github.com/k-gun/cryptee",
     "description": "Pretty easy, fast and secure two-way encryption with PHP.",
     "keywords": ["cryptee", "two-way encryption", "encryption"],
-    "license": "MIT",
-    "authors": [
-        {"name": "Kerem Güneş", "email": "k-gun@mail.com"}
-    ],
+    "license": "Apache-2.0",
+    "authors": [{"name": "Kerem Güneş"}],
     "require": {
         "php": "^5.4"
     },
