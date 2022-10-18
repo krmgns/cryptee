@@ -44,19 +44,21 @@ class Cryptee
      * @param string $key
      * @param int    $type
      */
-    public function __construct(string $key = null, int $type = null)
+    public function __construct(string $key, int $type = null)
     {
-        // check key
-        if ($key == null || strlen($key) < 6 || !(
-            preg_match('~[a-z0-9]+~i', $key) && preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
+        // Check key validity.
+        if (strlen($key) < 6 || !(
+            preg_match('~[a-z0-9]+~i', $key) &&
+            preg_match('~[_=&"\.\+\-\*\?\']+~', $key)
         )) {
-            throw new CrypteeException(sprintf("
-                Key length must be at least 6 chars and contain alp-num & printable chars!\n
-                Pick up random key below generated for once.\n
-                Key: %s", self::generateKey()
+            throw new CrypteeException(sprintf(
+                "Key length must be at least 6 chars and contain alp-num & printable chars!\n".
+                "Pick up random this key generated for once: '%s'\n",
+                str_replace("'", "\'", self::generateKey())
             ));
         }
-        $this->key = strval($key);
+
+        $this->key = $key;
 
         if ($type) {
             $this->type = $type;
