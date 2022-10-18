@@ -1,37 +1,41 @@
 ## Usage
 
+```bash
+composer require k-gun/cryptee
+```
+
 ```php
-// composer
-{"require": {"k-gun/cryptee": "dev-master"}}
+use Cryptee\Cryptee;
 
-// manual inc
-require('path/to/cryptee/src/Cryptee.php');
-
+$key = '4]%gmHo"e:]*hR(NQ?B...';
 $str = 'Lorem ipsum dolor.';
 
-$c = new Cryptee\Cryptee();
-// or hex way
-// $c = new Cryptee\Cryptee(null, Cryptee::HEX);
+$c = new Cryptee($key);
+// Or hex way.
+// $c = new Cryptee($key, Cryptee::HEX);
+
 $crypted = $c->crypt($str);
 $encoded = $c->encode($str);
 $decoded = $c->decode($encoded);
-printf('Crypted String: %s', $crypted);
-printf('Encoded String: %s', $encoded);
-printf('Decoded String: %s', htmlspecialchars($decoded, ENT_NOQUOTES, 'UTF-8'));
-// Crypted String: W˜kžß¨ÍJKV]%'„Ë
-// Encoded String: V5hrnt-ozUoDS1ZdJScEhMsH
+
+printf("Crypted String: %s\n", $crypted);
+printf("Encoded String: %s\n", $encoded);
+printf("Decoded String: %s\n", $decoded);
+
+// Crypted String: X�/����;���-6�[��
+// Encoded String: WJAv2/6x5Du/5IXjLTakW+jr
 // Decoded String: Lorem ipsum dolor.
 ```
 
-Use different keys for different purposes.
+Use different keys for different fields.
 
 ```php
-// keep in safe these chicks!!!
-define('FOO_KEY', 'z:W;[*l>Eq.h"t)cs#XhU\+!=S]#q)\yG-"?c"F;zVZFq./i_W"}"6^/=x$q)$');
-define('BAR_KEY', 'SNz6@b*/k(iw!plOVeTBWxpL[1$;la|kb2}KHsx7TO/Z28NTxr:QqTCNV$*v1S');
+// Keep these chicks in save!
+const FOO_KEY = 'z:W;[*l>Eq.h"t)cs#XhU\+!=S]#q)\yG-...';
+const BAR_KEY = 'SNz6@b*/k(iw!plOVeTBWxpL[1$;la|kb2...';
 
-$cFoo = new Cryptee\Cryptee(FOO_KEY);
-$cBar = new Cryptee\Cryptee(BAR_KEY);
+$cFoo = new Cryptee(FOO_KEY);
+$cBar = new Cryptee(BAR_KEY);
 ```
 
 Tip: You can create new keys calling `Cryptee::generateKey()` method.
