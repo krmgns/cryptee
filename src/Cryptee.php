@@ -74,30 +74,33 @@ class Cryptee
      */
     public function crypt(string $input): string
     {
-        $ret = b'';
-        $key = [];
-        $cnt = [];
+        static $top = 256;
+        $key = $cnt = [];
 
-        for ($i = 0, $length = strlen($this->key); $i < 255; $i++) {
-            $key[$i] = ord(substr($this->key, ($i % $length) + 1, 1));
+        for ($i = 0, $il = strlen($this->key); $i < $top; $i++) {
+            $key[$i] = ord(substr($this->key, ($i % $il) + 1, 1));
             $cnt[$i] = $i;
         }
 
-        for ($i = 0, $x = 0; $i < 255; $i++) {
-            $x = ($x + $cnt[$i] + $key[$i]) % 256;
-            $s = $cnt[$i];
-            $cnt[$i] = isset($cnt[$x]) ? $cnt[$x] : 0;
-            $cnt[$x] = $s;
+        for ($i = 0, $a = 0; $i < $top; $i++) {
+            $a = ($a + $cnt[$i] + $key[$i]) % $top;
+            $t = $cnt[$i];
+
+            $cnt[$i] = $cnt[$a] ?? 0;
+            $cnt[$a] = $t;
         }
 
-        for ($i = 0, $x = -1, $y = -1, $length = strlen($input); $i < $length; $i++) {
-            $x = ($x + 1) % 256;
-            $y = ($y + $cnt[$x]) % 256;
-            $z = $cnt[$x];
-            $cnt[$x] = isset($cnt[$y]) ? $cnt[$y] : 0;
-            $cnt[$y] = $z;
-            $ord  = ord(substr($input, $i, 1)) ^ $cnt[($cnt[$x] + $cnt[$y]) % 256];
-            $ret .= chr($ord);
+        $ret = b'';
+
+        for ($i = 0, $a = -1, $b = -1, $il = strlen($input); $i < $il; $i++) {
+            $a = ($a + 1) % $top;
+            $b = ($b + $cnt[$a]) % $top;
+            $t = $cnt[$a];
+
+            $cnt[$a] = $cnt[$b] ?? 0;
+            $cnt[$b] = $t;
+
+            $ret .= chr(ord(substr($input, $i, 1)) ^ $cnt[($cnt[$a] + $cnt[$b]) % $top]);
         }
 
         return $ret;
