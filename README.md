@@ -41,4 +41,5 @@ $cFoo = new Cryptee(FOO_KEY);
 $cBar = new Cryptee(BAR_KEY);
 ```
 
-Tip: You can create new keys calling `Cryptee::generateKey()` method.
+### Generating Cryptee Keys
+You can generate new keys calling `Cryptee::generateKey()` method with/without `$length` argument as key length. Default length is 128.
