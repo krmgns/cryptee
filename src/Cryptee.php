@@ -41,6 +41,7 @@ class Cryptee
 
     /**
      * Constructor.
+     *
      * @param string $key
      * @param int    $type
      */
@@ -67,6 +68,7 @@ class Cryptee
 
     /**
      * Crypt.
+     *
      * @param  string $input
      * @return string
      */
@@ -103,6 +105,7 @@ class Cryptee
 
     /**
      * Encode.
+     *
      * @param  string $input
      * @param  bool   $translate
      * @return string
@@ -124,6 +127,7 @@ class Cryptee
 
     /**
      * Decode.
+     *
      * @param  string $input
      * @param  bool   $translate
      * @return string
@@ -145,6 +149,7 @@ class Cryptee
 
     /**
      * Generate key.
+     *
      * @param  int $length
      * @return string
      */
