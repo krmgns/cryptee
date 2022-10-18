@@ -1,10 +1,8 @@
 ## Usage
 
-```bash
-composer require k-gun/cryptee
-```
-
 ```php
+// composer require k-gun/cryptee
+
 use Cryptee\Cryptee;
 
 $key = '4]%gmHo"e:]*hR(NQ?B...';
