@@ -149,6 +149,8 @@ class Cryptee
     public static function generateKey(int $length = self::KEY_LENGTH): string
     {
         $key = '';
+
+        srand();
         for ($i = 0; $i < $length; $i++) {
             $key .= chr(rand(33, 126));
         }
