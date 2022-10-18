@@ -135,25 +135,10 @@ class Cryptee
             $input = base64_decode($input);
             $input = $this->crypt($input);
         } elseif ($this->type == self::HEX) {
-            $input = $this->crypt($this->hexToBin($input));
+            $input = $this->crypt(hex2bin($input));
         }
 
         return $input;
-    }
-
-    /**
-     * Hex to bin.
-     * @param  string $hex
-     * @return binary
-     */
-    public function hexToBin($hex)
-    {
-        $bin = b'';
-        for ($i = 0, $length = strlen($hex); $i < $length; $i += 2) {
-            $bin .= chr(hexdec(substr($hex, $i, 2)));
-        }
-
-        return $bin;
     }
 
     /**
