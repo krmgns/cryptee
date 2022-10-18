@@ -1,8 +1,8 @@
-## Usage
+For Cryptee/2.0, PHP/7.4 or newer version is required, but older versions (1.0, 1.1, 1.2) work with PHP/5.4 as well.
+
+You can install it via (Composer)[https://getcomposer.org/] using `composer require k-gun/cryptee` command.
 
 ```php
-// composer require k-gun/cryptee
-
 use Cryptee\Cryptee;
 
 $key = '4]%gmHo"e:]*hR(NQ?B...';
