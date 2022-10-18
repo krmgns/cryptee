@@ -31,20 +31,20 @@ class Cryptee
      * Key.
      * @var string
      */
-    private $key;
+    private string $key;
 
     /**
      * Output type (base64 or hex, for readable strings)
      * @var int
      */
-    private $type = self::B64;
+    private int $type = self::B64;
 
     /**
      * Constructor.
      * @param string $key
      * @param int    $type
      */
-    public function __construct($key = null, $type = null)
+    public function __construct(string $key = null, int $type = null)
     {
         // check key
         if ($key == null || strlen($key) < 6 || !(
@@ -66,9 +66,9 @@ class Cryptee
     /**
      * Crypt.
      * @param  string $input
-     * @return binary
+     * @return string
      */
-    public function crypt($input)
+    public function crypt(string $input): string
     {
         $ret = b'';
         $key = [];
@@ -105,7 +105,7 @@ class Cryptee
      * @param  bool   $translate
      * @return string
      */
-    public function encode($input, $translate = false)
+    public function encode(string $input, bool $translate = false): string
     {
         $input = $this->crypt($input);
         if ($this->type == self::B64) {
@@ -126,7 +126,7 @@ class Cryptee
      * @param  bool   $translate
      * @return string
      */
-    public function decode($input, $translate = false)
+    public function decode(string $input, bool $translate = false): string
     {
         if ($this->type == self::B64) {
             if ($translate) {
@@ -161,7 +161,7 @@ class Cryptee
      * @param  int $length
      * @return string
      */
-    public static function generateKey($length = self::KEY_LENGTH)
+    public static function generateKey(int $length = self::KEY_LENGTH): string
     {
         $key = '';
         for ($i = 0; $i < $length; $i++) {
