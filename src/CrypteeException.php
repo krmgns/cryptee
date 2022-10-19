@@ -5,11 +5,11 @@
  */
 declare(strict_types=1);
 
-namespace Cryptee;
+namespace KGun\Cryptee;
 
 /**
- * @package Cryptee
- * @object  Cryptee\CrypteeException
+ * @package KGun\Cryptee
+ * @object  KGun\Cryptee\CrypteeException
  * @author  Kerem Güneş
 */
 class CrypteeException extends \Exception

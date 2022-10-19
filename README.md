@@ -7,7 +7,7 @@ You can install it via [Composer](//getcomposer.org) using the command below on 
 ### Usage
 
 ```php
-use Cryptee\Cryptee;
+use KGun\Cryptee\Cryptee;
 
 // Keep this key in save!
 $key = '4]%gmHo"e:]*hR(NQ?B...';

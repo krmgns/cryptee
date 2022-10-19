@@ -5,11 +5,11 @@
  */
 declare(strict_types=1);
 
-namespace Cryptee;
+namespace KGun\Cryptee;
 
 /**
- * @package Cryptee
- * @object  Cryptee\Cryptee
+ * @package KGun\Cryptee
+ * @object  KGun\Cryptee\Cryptee
  * @author  Kerem Güneş
  */
 class Cryptee
