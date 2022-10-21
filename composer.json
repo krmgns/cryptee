@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "authors": [{"name": "Kerem Güneş"}],
     "require": {
-        "php": "^7.4"
+        "php": ">=7.4"
     },
     "autoload": {
         "classmap": ["src/"]
