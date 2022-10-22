@@ -30,7 +30,7 @@ printf("Decoded String: %s\n", $decoded);
 // Decoded String: Lorem ipsum dolor.
 ```
 
-### Usings Different Keys
+### Using Different Keys
 
 ```php
 // Keep these keys in save!
@@ -41,5 +41,5 @@ $cFoo = new Cryptee(FOO_KEY);
 $cBar = new Cryptee(BAR_KEY);
 ```
 
-### Generating Cryptee Keys
+### Generating Keys
 You can generate new keys calling `Cryptee::generateKey()` method with/without `$length` argument as key length. Default length is 128.
