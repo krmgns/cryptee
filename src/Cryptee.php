@@ -42,8 +42,8 @@ class Cryptee
     /**
      * Constructor.
      *
-     * @param string $key
-     * @param int    $type
+     * @param string   $key
+     * @param int|null $type
      */
     public function __construct(string $key, int $type = null)
     {
@@ -64,6 +64,26 @@ class Cryptee
         if ($type) {
             $this->type = $type;
         }
+    }
+
+    /**
+     * Get key.
+     *
+     * @return string
+     */
+    public function key(): string
+    {
+        return $this->key;
+    }
+
+    /**
+     * Get type.
+     *
+     * @return int
+     */
+    public function type(): int
+    {
+        return $this->type;
     }
 
     /**
