@@ -2,12 +2,12 @@ For Cryptee/2.0, PHP/7.4 or newer version is required, but older Cryptee version
 
 You can install it via [Composer](//getcomposer.org) using the command below on console:
 
-`composer require k-gun/cryptee`
+`composer require okerem/cryptee`
 
 ### Usage
 
 ```php
-use KGun\Cryptee\Cryptee;
+use Cryptee\Cryptee;
 
 // Keep this key in save!
 $key = '4]%gmHo"e:]*hR(NQ?B...';

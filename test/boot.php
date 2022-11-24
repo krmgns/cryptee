@@ -2,7 +2,7 @@
 // Run:
 // phpunit --bootstrap=./boot.php ./unit
 // phpunit --bootstrap=./boot.php ./unit --colors --testdox
-namespace KGun\Cryptee;
+namespace Cryptee;
 
 // Register autoload.
 spl_autoload_register(function ($name) {

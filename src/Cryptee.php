@@ -1,15 +1,15 @@
 <?php
 /**
  * Copyright (c) 2008 · Kerem Güneş
- * Apache License 2.0 · https://github.com/k-gun/cryptee
+ * Apache License 2.0 · https://github.com/okerem/cryptee
  */
 declare(strict_types=1);
 
-namespace KGun\Cryptee;
+namespace Cryptee;
 
 /**
- * @package KGun\Cryptee
- * @object  KGun\Cryptee\Cryptee
+ * @package Cryptee
+ * @object  Cryptee\Cryptee
  * @author  Kerem Güneş
  */
 class Cryptee

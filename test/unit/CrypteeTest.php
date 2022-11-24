@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use KGun\Cryptee\{Cryptee, CrypteeException};
+use Cryptee\{Cryptee, CrypteeException};
 
 class CrypteeTest extends PHPUnit\Framework\TestCase
 {
