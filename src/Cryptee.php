@@ -9,7 +9,7 @@ namespace Cryptee;
 
 /**
  * @package Cryptee
- * @object  Cryptee\Cryptee
+ * @class   Cryptee\Cryptee
  * @author  Kerem Güneş
  */
 class Cryptee

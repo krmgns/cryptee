@@ -9,7 +9,7 @@ namespace Cryptee;
 
 /**
  * @package Cryptee
- * @object  Cryptee\CrypteeException
+ * @class   Cryptee\CrypteeException
  * @author  Kerem Güneş
 */
 class CrypteeException extends \Exception
